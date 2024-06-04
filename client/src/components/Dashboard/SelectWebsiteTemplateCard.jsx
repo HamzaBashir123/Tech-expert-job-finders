@@ -10,7 +10,7 @@ import { FiX } from "react-icons/fi";
 
 const SelectWebsiteTemplateCard = ({ data, route, activeTab,setIsChooseTempModalOpen,setIsSelectResumeModalOpen }) => {
   // const dispatch = useDispatch();
-  const { _id } = data;
+  const { _id, websiteTemplateName, previewImage ,category} = data;
 
   console.log(data);
   console.log(route);
@@ -60,15 +60,16 @@ const SelectWebsiteTemplateCard = ({ data, route, activeTab,setIsChooseTempModal
 
   return (
     <>
-      <Card
+      <div
         // style={{ width: "180px" }}
         className="w-full group/item overflow-hidden relative justify-center  rounded-lg cursor-pointer bg-white drop-shadow-lg m-[2rem]"
+        id={_id}
       >
         <div className=" object-contain overflow-hidden">
           <div className="wrapper bg-white p-4 object-cover">
             <Card.Img
               variant="top"
-              src={src}
+              src={category== "free" ?previewImage :src}
               className="object-contain rounded-lg"
             />
           </div>
@@ -76,7 +77,7 @@ const SelectWebsiteTemplateCard = ({ data, route, activeTab,setIsChooseTempModal
         <div className="relative flex justify-center">
           <div className="relative text-center">
             <p className="text-3xl py-2 text-black-300">
-              {name}
+              {category== "free" ? websiteTemplateName : name}
             </p>
           </div>
         </div>
@@ -99,7 +100,7 @@ const SelectWebsiteTemplateCard = ({ data, route, activeTab,setIsChooseTempModal
             </Link>
           )}
         </div>
-      </Card>
+      </div>
     </>
   );
 };
